@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbvmpwkt82ger"]
+
+[ext_resource type="Script" path="res://menu_info.gd" id="1_sxjcv"]
+
+[node name="Menu_Info" type="Node2D"]
+script = ExtResource("1_sxjcv")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 287.0
+offset_top = 294.0
+offset_right = 872.0
+offset_bottom = 343.0
+text = "Игра пока создаеца и вапще эта моя тест сцена для кнопки инф гаме
+Пытаюсь разобраться с кодом в этом движке..."
+horizontal_alignment = 1

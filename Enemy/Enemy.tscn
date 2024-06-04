@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://eq6f0g0mkwni"]
+
+[ext_resource type="Script" path="res://Enemy/Enemy.gd" id="1_pys6l"]
+[ext_resource type="PackedScene" uid="uid://cqoktkixymwfc" path="res://DamageBox/damage_box.tscn" id="2_p5agh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ba463"]
+radius = 16.0
+height = 64.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_niwte"]
+size = Vector2(68, 56)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_pys6l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_ba463")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AttackRange" type="Area2D" parent="Node2D"]
+collision_layer = 2
+collision_mask = 11
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/AttackRange"]
+position = Vector2(35, -2)
+shape = SubResource("RectangleShape2D_niwte")
+
+[node name="DamageBox" parent="Node2D" instance=ExtResource("2_p5agh")]
+
+[node name="HurtBox" parent="Node2D/DamageBox" index="0"]
+collision_layer = 32
+collision_mask = 64
+
+[node name="Hitbox" parent="Node2D/DamageBox" index="1"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="Node2D/DamageBox/Hitbox" index="0"]
+position = Vector2(47, 0)
+
+[node name="Run" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="body_entered" from="Node2D/AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="area_entered" from="Node2D/DamageBox/Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="timeout" from="Run" to="." method="_on_run_timeout"]
+
+[editable path="Node2D/DamageBox"]

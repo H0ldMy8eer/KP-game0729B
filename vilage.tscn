@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk24k27yerrwr"]
+
+[ext_resource type="PackedScene" uid="uid://bmxaf0n3sl6vm" path="res://Location/lvl 2/bg_2_lvl.tscn" id="1_34771"]
+
+[node name="Vilage" type="Node2D"]
+metadata/_edit_vertical_guides_ = [578.0]
+metadata/_edit_horizontal_guides_ = [324.0]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("1_34771")]
+
+[node name="ParallaxBackground2" type="ParallaxBackground" parent="."]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://duykjanrs4mfe"]
+
+[ext_resource type="AudioStream" uid="uid://dskqpr3mxg2vk" path="res://Sound/SFX/Dark Souls ' You Died ' Sound Effect_1.mp3" id="2_tutry"]
+
+[sub_resource type="GDScript" id="GDScript_vbvam"]
+script/source = "extends Node2D
+
+func _on_button_2_pressed():
+	get_tree().change_scene_to_file(\"res://Menu.tscn\")
+
+
+func _on_button_pressed():
+	get_tree().change_scene_to_file(\"res://Location/lvl 1/level.tscn\")
+"
+
+[node name="Death Screen" type="Node2D"]
+modulate = Color(0, 0, 0, 1)
+script = SubResource("GDScript_vbvam")
+metadata/_edit_vertical_guides_ = [580.0]
+metadata/_edit_horizontal_guides_ = [330.0]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 411.0
+offset_top = 70.0
+offset_right = 750.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 36
+text = "YOU DIED..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+offset_left = 418.0
+offset_top = 198.0
+offset_right = 746.0
+offset_bottom = 279.0
+text = "Replay"
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 418.0
+offset_top = 356.0
+offset_right = 746.0
+offset_bottom = 437.0
+text = "Back to Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tutry")
+autoplay = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

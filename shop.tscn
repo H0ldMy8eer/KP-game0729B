@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://bu7umjka6k450"]
+
+[ext_resource type="Texture2D" uid="uid://hfvj3gwgfpyl" path="res://Location/lvl 1/woods/decorations/shopa.png" id="1_76xbt"]
+[ext_resource type="PackedScene" uid="uid://bhylcgffflt0y" path="res://Props/lantern.tscn" id="2_pnhqk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8t377"]
+radius = 51.6236
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8k4mg"]
+atlas = ExtResource("1_76xbt")
+region = Rect2(118, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgre4"]
+atlas = ExtResource("1_76xbt")
+region = Rect2(236, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdlxp"]
+atlas = ExtResource("1_76xbt")
+region = Rect2(354, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iv6bq"]
+atlas = ExtResource("1_76xbt")
+region = Rect2(472, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhndc"]
+atlas = ExtResource("1_76xbt")
+region = Rect2(590, 0, 118, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jdiku"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8k4mg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgre4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdlxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iv6bq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhndc")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wpo83"]
+size = Vector2(114, 97)
+
+[node name="Shop" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="Shop" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shop"]
+shape = SubResource("CircleShape2D_8t377")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shop"]
+position = Vector2(-1, -31)
+sprite_frames = SubResource("SpriteFrames_jdiku")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.620351
+
+[node name="Lantern" parent="Shop" instance=ExtResource("2_pnhqk")]
+position = Vector2(48, 4)
+scale = Vector2(0.0895522, 0.0895522)
+
+[node name="Lantern2" parent="Shop" instance=ExtResource("2_pnhqk")]
+position = Vector2(-49, 4)
+scale = Vector2(0.0895522, 0.0895522)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, -15.5)
+shape = SubResource("RectangleShape2D_wpo83")

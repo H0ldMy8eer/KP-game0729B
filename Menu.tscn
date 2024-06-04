@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://2uw51lu3msvb"]
+
+[ext_resource type="Script" path="res://Menu.gd" id="1_hw0kj"]
+[ext_resource type="PackedScene" uid="uid://cihv5um4kr3gt" path="res://Location/lvl 1/bg.tscn" id="2_o5eko"]
+[ext_resource type="AudioStream" uid="uid://csjvlawkkqpnh" path="res://Sound/music/medieval-fantasy-142837.mp3" id="3_k44ti"]
+[ext_resource type="AudioStream" uid="uid://bcq683ict3s8x" path="res://Sound/SFX/minecraft_click_1.mp3" id="4_1r28j"]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_hw0kj")
+metadata/_edit_horizontal_guides_ = [333.0]
+metadata/_edit_vertical_guides_ = [700.0]
+
+[node name="Play" type="Button" parent="."]
+offset_left = 334.0
+offset_top = 197.0
+offset_right = 789.0
+offset_bottom = 266.0
+theme_override_font_sizes/font_size = 35
+text = "Start Game"
+
+[node name="Info" type="Button" parent="Play"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 85.0
+offset_right = 454.0
+offset_bottom = 155.0
+theme_override_font_sizes/font_size = 35
+text = "Info Game"
+
+[node name="Quit" type="Button" parent="Play/Info"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 90.0
+offset_right = 455.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 0
+text = "Quit"
+
+[node name="Setings" type="Button" parent="Play/Info"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 90.0
+offset_right = 216.0
+offset_bottom = 152.0
+text = "Setings"
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0.470588, 0.470588, 0.470588, 1)
+offset_left = 4.0
+offset_top = 619.0
+offset_right = 96.0
+offset_bottom = 642.0
+text = "0.7.29 Beta."
+
+[node name="BG" parent="." instance=ExtResource("2_o5eko")]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_k44ti")
+volume_db = -25.041
+autoplay = true
+
+[node name="Buttons" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1r28j")
+pitch_scale = 0.56
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Play/Info" to="." method="_on_info_pressed"]
+[connection signal="pressed" from="Play/Info/Quit" to="." method="_on_quit_pressed"]

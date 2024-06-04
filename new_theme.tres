@@ -1,0 +1,24 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b0k76okgoqx48"]
+
+[ext_resource type="FontFile" uid="uid://bg2hyquragcjc" path="res://UI/UI ass/minecraft.ttf" id="1_qwaxn"]
+[ext_resource type="Texture2D" uid="uid://h7cuktfulo2x" path="res://UI/UI ass/UI_border.png" id="2_iopt3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2xum5"]
+texture = ExtResource("2_iopt3")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n7i62"]
+texture = ExtResource("2_iopt3")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[resource]
+default_font = ExtResource("1_qwaxn")
+Label/fonts/font = ExtResource("1_qwaxn")
+Panel/styles/panel = SubResource("StyleBoxTexture_2xum5")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_n7i62")
